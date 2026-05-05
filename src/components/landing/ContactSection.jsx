@@ -32,9 +32,14 @@ export default function ContactSection() {
   };
 
   const contactInfo = [
-    { icon: Mail, label: "Email Us", value: "hello@advantage.ai" },
-    { icon: Phone, label: "Call Us", value: "+1 (800) ADV-ANTA" },
-    { icon: MapPin, label: "Headquarters", value: "Dubai · Lagos · London" },
+    { icon: Mail, label: "Email Us", value: "info@advantageng.com" },
+    { icon: Phone, label: "Call Us", value: "+234 905 536 6549" },
+    {
+      icon: MapPin,
+      label: "Headquarters",
+      value:
+        "Plot 430, Ali Muhammad Zara Street, Central Business District, FCT Abuja",
+    },
   ];
 
   return (

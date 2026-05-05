@@ -3,12 +3,20 @@ import ScrollReveal from "./ScrollReveal";
 
 const team = [
   {
-    name: "David Osei-Bonsu",
-    title: "Founder & CEO",
+    name: "Akubo Favor",
+    title: "Co-Founder & CEO",
     image:
-      "https://media.base44.com/images/public/69efaf66bbc04c94531bd0d2/5f6ba67a6_generated_image.png",
-    bio: "15 years leading enterprise transformation across Africa and the Middle East. Former McKinsey consultant turned technology entrepreneur. David founded Advantage with the conviction that every business — regardless of size or sector — deserves access to world-class digital infrastructure.",
+      "https://www.spacedezyn.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdnwqqmdee%2Fimage%2Fupload%2Fv1758473366%2FFavour_Akubo_1_ajpsrt.jpg&w=828&q=75",
+    bio: "15 years leading enterprise transformation across Africa and the Middle East. Former McKinsey consultant turned technology entrepreneur. Akubo founded Advantage with the conviction that every business — regardless of size or sector — deserves access to world-class digital infrastructure.",
     expertise: ["Strategy", "Enterprise Clients", "Fundraising"],
+  },
+  {
+    name: "Ekong Evie Emmanuel",
+    title: "Co-Founder & CTO",
+    image:
+      "https://www.spacedezyn.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdnwqqmdee%2Fimage%2Fupload%2Fv1758473365%2Fekong_xsrt48.jpg&w=828&q=75",
+    bio: "Full-stack architect with deep expertise in cloud-native systems, AI integration, and enterprise ERP. Ekong has led engineering teams at companies backed by Sequoia and Andreessen Horowitz. At Advantage, he sets the technical standard for every platform we ship.",
+    expertise: ["Cloud Architecture", "AI/ML Systems", "ERP Engineering"],
   },
   {
     name: "Amara Mensah",
@@ -18,14 +26,7 @@ const team = [
     bio: "Operations architect with a track record of scaling service businesses from 10 to 200+ people. Amara oversees all client delivery, ensuring every engagement runs on time, on budget, and above expectation. Her background spans hospitality operations, FinTech project management, and agency leadership.",
     expertise: ["Delivery Excellence", "Team Scaling", "Client Relations"],
   },
-  {
-    name: "Rajan Pillai",
-    title: "Chief Technology Officer",
-    image:
-      "https://media.base44.com/images/public/69efaf66bbc04c94531bd0d2/0e2970d18_generated_image.png",
-    bio: "Full-stack architect with deep expertise in cloud-native systems, AI integration, and enterprise ERP. Rajan has led engineering teams at companies backed by Sequoia and Andreessen Horowitz. At Advantage, he sets the technical standard for every platform we ship.",
-    expertise: ["Cloud Architecture", "AI/ML Systems", "ERP Engineering"],
-  },
+
   {
     name: "Layla Al-Farsi",
     title: "Creative Director",

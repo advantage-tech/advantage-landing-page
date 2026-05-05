@@ -60,18 +60,33 @@ export default function Footer() {
               </div>
               <div className="space-y-3">
                 {[
-                  "Hospitality",
-                  "FinTech",
-                  "Interior Design",
-                  "Media & Broadcasting",
-                  "Retail & E-Commerce",
+                  {
+                    title: "Hospitality",
+                    value: "hospitality",
+                  },
+                  {
+                    title: "FinTech",
+                    value: "fintech",
+                  },
+                  {
+                    title: "Interior Design",
+                    value: "interior-design",
+                  },
+                  {
+                    title: "Media & Broadcasting",
+                    value: "media",
+                  },
+                  {
+                    title: "Retail & E-Commerce",
+                    value: "retail",
+                  },
                 ].map((item) => (
                   <a
                     key={item}
-                    href="#"
+                    href={`/industry/${item.value}`}
                     className="block font-inter text-sm text-foreground/70 hover:text-foreground transition-colors"
                   >
-                    {item}
+                    {item.title}
                   </a>
                 ))}
               </div>
@@ -87,7 +102,7 @@ export default function Footer() {
                   "Case Studies",
                   "Process",
                   "FAQ",
-                  "hello@advantage.ai",
+                  "info@advantageng.com",
                 ].map((item) => (
                   <a
                     key={item}
@@ -107,13 +122,22 @@ export default function Footer() {
             © 2026 Advantage. All rights reserved.
           </span>
           <div className="flex items-center gap-6">
-            {["Privacy", "Terms", "Cookies"].map((item) => (
+            {[
+              {
+                title: "Privacy",
+                value: "privacy",
+              },
+              {
+                title: "Terms",
+                value: "terms",
+              },
+            ].map((item) => (
               <a
-                key={item}
-                href="#"
+                key={item.value}
+                href={`/${item.value}`}
                 className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground/50 hover:text-muted-foreground transition-colors"
               >
-                {item}
+                {item.title}
               </a>
             ))}
           </div>

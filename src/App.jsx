@@ -6,6 +6,11 @@ import PageNotFound from "./lib/PageNotFound";
 import { AuthProvider, useAuth } from "@/lib/AuthContext";
 import UserNotRegisteredError from "@/components/UserNotRegisteredError";
 import Home from "./pages/Home";
+import Services from "./pages/Services";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
+import Industry from "./pages/Industry";
+import CookieConsent from "./components/CookieConsent";
 
 // Add page imports here
 
@@ -37,6 +42,10 @@ const AuthenticatedApp = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/services" element={<Services />} />
+      <Route path="/privacy" element={<PrivacyPolicy />} />
+      <Route path="/terms" element={<Terms />} />
+      <Route path="/industry/:slug" element={<Industry />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
@@ -48,6 +57,7 @@ function App() {
       <QueryClientProvider client={queryClientInstance}>
         <Router>
           <AuthenticatedApp />
+          <CookieConsent />
         </Router>
         <Toaster />
       </QueryClientProvider>

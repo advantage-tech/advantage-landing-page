@@ -84,7 +84,7 @@ For clients where no jurisdiction is specified, disputes shall be resolved throu
     title: "12. Contact",
     content: `For any questions regarding these Terms of Service, please contact us at:
 
-Email: hello@advantage.ai
+Email: info@advantageng.com
 Subject: Terms Enquiry
 
 We are committed to resolving any concerns promptly and in good faith.`,

@@ -13,6 +13,8 @@ const navLinks = [
   { label: "Process", href: "#process" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#reach-out" },
+  // { label: "Privacy Policy", href: "/privacy" },
+  // { label: "Terms & Conditions", href: "/terms" },
 ];
 
 export default function Navbar() {
@@ -38,7 +40,7 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
-          <a href="#">
+          <a href="/">
             <img
               src={LOGO_WHITE}
               alt="Advantage"

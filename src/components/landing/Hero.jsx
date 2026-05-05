@@ -49,7 +49,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full pt-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full pt-24 sm:pt-36">
         <div className="flex flex-col items-start">
           {/* Metadata label */}
           <motion.div
@@ -67,7 +67,7 @@ export default function Hero() {
           {/* Main headline */}
           <div className="space-y-2 lg:space-y-3">
             <motion.h1
-              className="font-inter text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extralight tracking-tight text-foreground leading-[0.9]"
+              className="font-inter text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-7xl font-extralight tracking-tight text-foreground leading-[0.9]"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -79,7 +79,7 @@ export default function Hero() {
               Your Business.
             </motion.h1>
             <motion.h1
-              className="font-inter text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight text-primary leading-[0.9]"
+              className="font-inter text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-7xl font-bold tracking-tight text-primary leading-[0.9]"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -91,7 +91,7 @@ export default function Hero() {
               Amplified.
             </motion.h1>
             <motion.h1
-              className="font-inter text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extralight tracking-tight text-secondary leading-[0.9]"
+              className="font-inter text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-7xl font-extralight tracking-tight text-secondary leading-[0.9]"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{

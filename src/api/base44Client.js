@@ -7,7 +7,7 @@ const { appId, token, functionsVersion, appBaseUrl } = appParams;
 export const base44 = createClient({
   appId,
   headers: {
-    api_key: "c0c8fa2c1283449eb9e2c3c642a67b79",
+    api_key: import.meta.env.VITE_BASE44_API_KEY,
   },
   token,
   functionsVersion,

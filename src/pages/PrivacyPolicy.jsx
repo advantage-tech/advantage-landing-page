@@ -8,7 +8,7 @@ import PulseLines from "../components/landing/PulseLines";
 const sections = [
   {
     title: "1. Who We Are",
-    content: `Advantage is a technology and business solutions company providing strategic branding, enterprise ERP development, SaaS platform engineering, and AI-powered marketing services. Our registered business address and primary point of contact for privacy matters is hello@advantage.ai.
+    content: `Advantage is a technology and business solutions company providing strategic branding, enterprise ERP development, SaaS platform engineering, and AI-powered marketing services. Our registered business address and primary point of contact for privacy matters is info@advantageng.com.
 
 When we refer to "Advantage," "we," "us," or "our" in this policy, we mean the Advantage entity responsible for processing your personal data.`,
   },
@@ -84,7 +84,7 @@ We require all third parties to respect the security of your personal data and t
 — Right to object: Object to processing based on legitimate interests or for direct marketing
 — Right to withdraw consent: Where processing is based on consent, withdraw it at any time
 
-To exercise any of these rights, contact us at hello@advantage.ai. We will respond within 30 days.`,
+To exercise any of these rights, contact us at info@advantageng.com. We will respond within 30 days.`,
   },
   {
     title: "10. Security",
@@ -98,7 +98,7 @@ To exercise any of these rights, contact us at hello@advantage.ai. We will respo
     title: "12. Contact Us",
     content: `If you have any questions about this Privacy Policy or our data practices, please contact our team at:
 
-Email: hello@advantage.ai
+Email: info@advantageng.com
 Subject line: Privacy Enquiry
 
 We take privacy seriously and will respond promptly to any concerns.`,
