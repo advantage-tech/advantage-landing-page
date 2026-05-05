@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { motion } from "framer-motion";
 import {
   Mail,
@@ -12,35 +15,58 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import ScrollReveal from "./ScrollReveal";
 import { toast } from "sonner";
+import { base44 } from "@/api/base44Client";
+
+const schema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+});
+
+const contactInfo = [
+  { icon: Mail, label: "Email Us", value: "info@advantageng.com" },
+  { icon: Phone, label: "Call Us", value: "+234 905 536 6549" },
+  {
+    icon: MapPin,
+    label: "Headquarters",
+    value:
+      "Plot 430, Ali Muhammad Zara Street, Central Business District, FCT Abuja",
+  },
+];
 
 export default function ContactSection() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
-      toast.error("Please fill in all fields.");
-      return;
-    }
-    setLoading(true);
-    await new Promise((r) => setTimeout(r, 1400));
-    setLoading(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm({ resolver: zodResolver(schema) });
+
+  const onSubmit = async (data) => {
+    await base44.integrations.Core.SendEmail({
+      to: "info@advantageng.com",
+      subject: `New Contact Message from ${data.name}`,
+      body: `
+Name: ${data.name}
+Email: ${data.email}
+
+Message:
+${data.message}
+      `.trim(),
+    });
+
+    // Auto-reply to the sender
+    await base44.integrations.Core.SendEmail({
+      to: data.email,
+      from_name: "Advantage",
+      subject: "We received your message",
+      body: `Hi ${data.name},\n\nThank you for reaching out to Advantage. A member of our team will respond to your message within 24 hours.\n\nBest regards,\nThe Advantage Team`,
+    });
+
     setSent(true);
     toast.success("Message sent! We'll be in touch within 24 hours.");
   };
-
-  const contactInfo = [
-    { icon: Mail, label: "Email Us", value: "info@advantageng.com" },
-    { icon: Phone, label: "Call Us", value: "+234 905 536 6549" },
-    {
-      icon: MapPin,
-      label: "Headquarters",
-      value:
-        "Plot 430, Ali Muhammad Zara Street, Central Business District, FCT Abuja",
-    },
-  ];
 
   return (
     <section
@@ -60,14 +86,12 @@ export default function ContactSection() {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
-          {/* Left: contact info */}
           <ScrollReveal>
             <p className="font-inter text-base text-muted-foreground leading-relaxed mb-12 font-light max-w-md">
               Have a question? Not ready for a full brief yet? That's fine. Drop
               us a message and a real person from our team will respond — no
               auto-responders, no BDRs.
             </p>
-
             <div className="space-y-6">
               {contactInfo.map(({ icon: Icon, label, value }) => (
                 <div
@@ -90,7 +114,6 @@ export default function ContactSection() {
             </div>
           </ScrollReveal>
 
-          {/* Right: simple form */}
           <ScrollReveal delay={0.2}>
             {sent ? (
               <motion.div
@@ -107,51 +130,69 @@ export default function ContactSection() {
                 </p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="space-y-2">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="space-y-5"
+                noValidate
+              >
+                {/* Name */}
+                <div className="space-y-1.5">
                   <label className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                     Your Name
                   </label>
                   <Input
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    {...register("name")}
                     placeholder="Full name"
-                    className="bg-muted/50 border-border/50 rounded-sm h-12 font-inter placeholder:text-muted-foreground/40"
+                    className={`bg-muted/50 border-border/50 rounded-sm h-12 font-inter placeholder:text-muted-foreground/40 ${errors.name ? "border-destructive focus-visible:ring-destructive" : ""}`}
                   />
+                  {errors.name && (
+                    <p className="font-inter text-xs text-destructive">
+                      {errors.name.message}
+                    </p>
+                  )}
                 </div>
-                <div className="space-y-2">
+
+                {/* Email */}
+                <div className="space-y-1.5">
                   <label className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                     Email Address
                   </label>
                   <Input
+                    {...register("email")}
                     type="email"
-                    value={form.email}
-                    onChange={(e) =>
-                      setForm({ ...form, email: e.target.value })
-                    }
                     placeholder="work@company.com"
-                    className="bg-muted/50 border-border/50 rounded-sm h-12 font-inter placeholder:text-muted-foreground/40"
+                    className={`bg-muted/50 border-border/50 rounded-sm h-12 font-inter placeholder:text-muted-foreground/40 ${errors.email ? "border-destructive focus-visible:ring-destructive" : ""}`}
                   />
+                  {errors.email && (
+                    <p className="font-inter text-xs text-destructive">
+                      {errors.email.message}
+                    </p>
+                  )}
                 </div>
-                <div className="space-y-2">
+
+                {/* Message */}
+                <div className="space-y-1.5">
                   <label className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                     Your Message
                   </label>
                   <Textarea
-                    value={form.message}
-                    onChange={(e) =>
-                      setForm({ ...form, message: e.target.value })
-                    }
+                    {...register("message")}
                     placeholder="Tell us what's on your mind..."
-                    className="bg-muted/50 border-border/50 rounded-sm min-h-[140px] resize-none font-inter placeholder:text-muted-foreground/40"
+                    className={`bg-muted/50 border-border/50 rounded-sm min-h-[140px] resize-none font-inter placeholder:text-muted-foreground/40 ${errors.message ? "border-destructive focus-visible:ring-destructive" : ""}`}
                   />
+                  {errors.message && (
+                    <p className="font-inter text-xs text-destructive">
+                      {errors.message.message}
+                    </p>
+                  )}
                 </div>
+
                 <button
                   type="submit"
-                  disabled={loading}
+                  disabled={isSubmitting}
                   className="w-full flex items-center justify-center gap-3 py-4 bg-primary text-primary-foreground font-mono text-xs uppercase tracking-widest rounded-sm hover:bg-primary/90 transition-all duration-300 disabled:opacity-50"
                 >
-                  {loading ? (
+                  {isSubmitting ? (
                     <Loader2 className="w-4 h-4 animate-spin" />
                   ) : (
                     <>
